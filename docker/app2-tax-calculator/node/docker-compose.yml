@@ -1,0 +1,18 @@
+services:
+
+  service-a:
+    build: ./service-a
+    #image: shashankmohan/tax-service-a:01
+    ports:
+      - "3100:3000"
+    depends_on:
+      - service-b
+    environment:
+      - TAX_SERVICE_URL= http://service-b:4000
+
+
+  service-b:
+    build: ./service-b
+    #image: shashankmohan/tax-service-b:01
+    ports:
+      - "3200:4000"
